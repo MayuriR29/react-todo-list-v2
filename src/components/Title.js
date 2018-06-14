@@ -2,7 +2,7 @@ import React from 'react';
 const Title=(props)=>{
     return(
         <div>
-       <h1>{props.name}</h1> 
+       <h1>{props.titleName}</h1> 
        </div>
     );
 }

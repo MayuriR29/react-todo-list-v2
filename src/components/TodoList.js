@@ -15,7 +15,7 @@ class TodoList extends Component {
         <Title titleName="My todo list" />
         <ul>
           {this.state.key.map((todo, index) => {
-            return <li>{todo.name} </li>;
+            return <li key={index} >{todo.name} </li>;
           })}
         </ul>
       </div>

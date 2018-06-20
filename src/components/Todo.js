@@ -1,13 +1,10 @@
 import React from 'react';
 const Todo=((props)=>{
-    return(
-        props.todo.isCompleted === true ? (
-            <li id="done" >
-              {props.todo.name}{" "}
+    return(        
+            <li id={props.todo.isCompleted ?"done":''} key={props.todoId}
+            onClick={props.handleClick}>
+              {props.todo.name}
             </li>
-          ) : (
-            <li >{props.todo.name} </li>
-          )
     )
     
 });

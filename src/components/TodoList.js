@@ -6,18 +6,21 @@ class TodoList extends Component {
   constructor() {
     super();
     this.state = {
-      key: todos,
+      todos: todos,
       inputValue: ""
     };
   }
   handleClick(eachTodo,index){
     // const changedTodo=this.state.eachTodo[index];
     const updatedTodo={...eachTodo,isCompleted:true};
+    console.log('handleClick updatedTodo',updatedTodo);
+    console.log('index',index);
     this.setState({
-      key:[...this.state.key.slice(0,index),
-        updatedTodo,this.state.key.slice(index+1)]
+      todos:[...this.state.todos.slice(0,index),
+        updatedTodo,...this.state.todos.slice(index+1)]
     })
   };
+
   handleNewTodo(event) {
     this.setState({
       inputValue: event.target.value
@@ -25,11 +28,13 @@ class TodoList extends Component {
   }
   addNewTodo() {
     const newTodo = {
-      key: this.state.inputValue,
+      name: this.state.inputValue,
       isCompleted: false
     };
+    console.log('this.state',this.state);
     this.setState({
-      key: [...todos, newTodo]
+      todos: [...this.state.todos, newTodo],
+      inputValue: ""
     });
   }
 
@@ -39,9 +44,9 @@ class TodoList extends Component {
       <div className="TodoList">
         <Title titleName="My todo list" />
         <ul>
-          {this.state.key.map((eachTodo, index) => {
+          {this.state.todos.map((eachTodo, index) => {
             return (
-              <Todo key={index} todo={eachTodo} handleClick={()=>this.handleClick(eachTodo,index)} />
+              <Todo todoId={index} todo={eachTodo} handleClick={()=>this.handleClick(eachTodo,index)} />
             )
             
           })}
